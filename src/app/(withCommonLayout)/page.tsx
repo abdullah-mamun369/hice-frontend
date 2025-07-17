@@ -1,4 +1,5 @@
 import CustomTabComponent from "@/components/Tabs/CustomTabComponent";
+import HeroSection from "@/components/Ui/Homepage/HeroSection/HeroSection";
 
 const page = () => {
   const tabs = [
@@ -32,10 +33,10 @@ const page = () => {
   ];
 
   return (
-    <div>
-      This is the main page with common layout
-      <CustomTabComponent tabs={tabs} sx={{ marginTop: 2 }} />
-    </div>
+    <>
+      <HeroSection />
+      {/* <CustomTabComponent tabs={tabs} sx={{}} /> */}
+    </>
   );
 };
 
