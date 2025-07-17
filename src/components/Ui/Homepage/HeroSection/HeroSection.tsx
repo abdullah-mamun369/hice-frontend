@@ -8,6 +8,7 @@ const HeroSection = () => {
       sx={{
         position: "relative",
         width: "100%",
+        marginBottom: "50px",
       }}
     >
       <Image src={heroBanner} alt="Hero Image" />
