@@ -7,7 +7,7 @@ import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 import TryIcon from "@mui/icons-material/Try";
-import { USER_ROLE } from "@/contants/role";
+import { USER_ROLE } from "@/constants/role";
 
 export const drawerItems = (role: UserRole): DrawerItem[] => {
   const roleMenus: DrawerItem[] = [];
@@ -63,7 +63,7 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
       );
       break;
 
-    case USER_ROLE.DOCTOR:
+    case USER_ROLE.BUYER:
       roleMenus.push(
         {
           title: "Dashboard",
@@ -79,26 +79,6 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
           title: "Appointments",
           path: `${role}/appointments`,
           icon: CalendarMonthIcon,
-        }
-      );
-      break;
-
-    case USER_ROLE.PATIENT:
-      roleMenus.push(
-        {
-          title: "Appointments",
-          path: `${role}/appointments`,
-          icon: DashboardIcon,
-        },
-        {
-          title: "Prescriptions",
-          path: `${role}/prescriptions`,
-          icon: DashboardIcon,
-        },
-        {
-          title: "Payment History",
-          path: `${role}/payment-history`,
-          icon: DashboardIcon,
         }
       );
       break;

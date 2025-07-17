@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const modifyPayload = (payload: any) => {
   const obj = { ...payload };
   const file = obj["file"];

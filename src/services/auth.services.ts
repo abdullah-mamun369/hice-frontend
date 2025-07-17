@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { authKey } from "@/constant/authkey";
+import { authKey } from "@/constants/authkey";
 import { decodedToken } from "@/utils/jwt";
 import {
   getFromLocalStorage,

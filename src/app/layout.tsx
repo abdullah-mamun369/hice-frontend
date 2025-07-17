@@ -15,17 +15,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Providers>
-      <html lang="en">
-        <body>
+    <html lang="en">
+      <body suppressHydrationWarning>
+        <Providers>
           <AppRouterCacheProvider>
             <>
               <Toaster position="top-center" />
               {children}
             </>
           </AppRouterCacheProvider>
-        </body>
-      </html>
-    </Providers>
+        </Providers>
+      </body>
+    </html>
   );
 }
