@@ -1,4 +1,4 @@
-import { SxProps, TextField } from "@mui/material";
+import { InputAdornment, SxProps, TextField } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
 type TPHInputProps = {
@@ -10,6 +10,8 @@ type TPHInputProps = {
   sx?: SxProps;
   placeholder?: string;
   required?: boolean;
+  icon?: React.ReactNode;
+  iconColor?: string;
 };
 
 const PHInput = ({
@@ -21,6 +23,8 @@ const PHInput = ({
   sx,
   placeholder = label,
   required,
+  icon,
+  iconColor = "#949494",
 }: TPHInputProps) => {
   const { control } = useFormContext();
 
@@ -41,6 +45,21 @@ const PHInput = ({
           required={required}
           error={!!error?.message}
           helperText={error?.message}
+          InputProps={{
+            startAdornment: icon ? (
+              <InputAdornment position="start">
+                <span
+                  style={{
+                    color: iconColor,
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {icon}
+                </span>
+              </InputAdornment>
+            ) : undefined,
+          }}
         />
       )}
     />

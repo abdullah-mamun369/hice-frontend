@@ -1,15 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { FieldValues } from "react-hook-form";
@@ -22,7 +14,9 @@ import PHInput from "@/components/Forms/PHInput";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import logoColored from "@/assets/color-logo.png";
+import logoWhite from "@/assets/white-logo.png";
+import Person2Icon from "@mui/icons-material/Person2";
+import LockIcon from "@mui/icons-material/Lock";
 
 export const validationSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -50,39 +44,58 @@ const LoginPage = () => {
   };
 
   return (
-    <Container>
-      <Stack
+    <Box
+      sx={{
+        display: "flex",
+        width: "100vw",
+        height: "100vh",
+        overflow: "hidden",
+      }}
+    >
+      {/* Left Portion (50% width, 100% height) */}
+      <Box
         sx={{
-          height: "100vh",
-          justifyContent: "center",
+          width: "50%",
+          height: "100%",
+          bgcolor: "primary.main",
+          display: "flex",
           alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        <Box
+        <Image src={logoWhite} width={500} height={500} alt="logo" />
+      </Box>
+
+      {/* Right Portion (50% width, 100% height) */}
+      <Box
+        sx={{
+          width: "50%",
+          height: "100%",
+          bgcolor: "#ffffff",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Stack
           sx={{
-            maxWidth: 600,
-            width: "100%",
-            boxShadow: 1,
-            borderRadius: 1,
-            p: 4,
-            textAlign: "center",
+            justifyContent: "center",
+            alignItems: "center",
           }}
+          mb={5}
         >
-          <Stack
-            sx={{
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+          <Typography
+            variant="h2"
+            fontWeight={700}
+            color="secondary.main"
+            mb={1}
           >
-            <Box>
-              <Image src={logoColored} width={150} height={150} alt="logo" />
-            </Box>
-            <Box>
-              <Typography variant="h6" fontWeight={600}>
-                Login H&I Consylting Engineers
-              </Typography>
-            </Box>
-          </Stack>
+            Sign In
+          </Typography>
+          <Typography variant="h6" fontWeight={700} color="secondary.main">
+            Signin to view all the 3D models.
+          </Typography>
           {error && (
             <Box>
               <Typography color="error" component="p" fontWeight={700}>
@@ -90,35 +103,83 @@ const LoginPage = () => {
               </Typography>
             </Box>
           )}
-          <Box>
-            <PHForm
-              onSubmit={handleLogin}
-              resolver={zodResolver(validationSchema)}
-              defaultValues={{ email: "", password: "" }}
-            >
-              <Grid container spacing={2} my={1}>
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <PHInput name="email" label="Email" fullWidth={true} />
-                </Grid>
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <PHInput name="password" label="Password" fullWidth={true} />
-                </Grid>
-              </Grid>
+        </Stack>
 
+        <Box>
+          <PHForm
+            onSubmit={handleLogin}
+            resolver={zodResolver(validationSchema)}
+            defaultValues={{ email: "", password: "" }}
+          >
+            <Box>
+              <Box mb={1}>
+                <PHInput
+                  name="email"
+                  label="User Email"
+                  fullWidth={true}
+                  sx={{
+                    marginBottom: "20px",
+                    "& .MuiInputBase-input": {
+                      padding: "16px 14px",
+                    },
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: "8px",
+                      height: "50px",
+                      backgroundColor: "#f5f5f5",
+                    },
+                  }}
+                  icon={<Person2Icon sx={{ fontSize: 26 }} />}
+                />
+                <PHInput
+                  name="password"
+                  label="Password"
+                  fullWidth={true}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      padding: "16px 14px",
+                    },
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: "8px",
+                      height: "50px",
+                      backgroundColor: "#f5f5f5",
+                    },
+                  }}
+                  icon={<LockIcon fontSize="medium" />}
+                />
+              </Box>
+              <Typography
+                mb={1}
+                textAlign="end"
+                component="p"
+                fontWeight={400}
+                color="secondary.main"
+                sx={{
+                  "&:hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
+                <Link href="/register">Forgot Password?</Link>
+              </Typography>
               <Button
                 sx={{
+                  borderRadius: "8px",
                   margin: "10px 0px",
+                  height: "50px",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  color: "#ffffff",
                 }}
                 fullWidth={true}
                 type="submit"
               >
-                Login
+                Sign In
               </Button>
-            </PHForm>
-          </Box>
+            </Box>
+          </PHForm>
         </Box>
-      </Stack>
-    </Container>
+      </Box>
+    </Box>
   );
 };
 
