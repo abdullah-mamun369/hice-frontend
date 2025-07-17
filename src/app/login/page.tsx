@@ -75,11 +75,11 @@ const LoginPage = () => {
             }}
           >
             <Box>
-              <Image src={logoColored} width={50} height={50} alt="logo" />
+              <Image src={logoColored} width={150} height={150} alt="logo" />
             </Box>
             <Box>
               <Typography variant="h6" fontWeight={600}>
-                Login PH HealthCare
+                Login H&I Consylting Engineers
               </Typography>
             </Box>
           </Stack>
@@ -104,9 +104,7 @@ const LoginPage = () => {
                   <PHInput name="password" label="Password" fullWidth={true} />
                 </Grid>
               </Grid>
-              <Typography mb={1} textAlign="end" component="p" fontWeight={300}>
-                <Link href="/register">Forgot Password?</Link>
-              </Typography>
+
               <Button
                 sx={{
                   margin: "10px 0px",
@@ -117,12 +115,6 @@ const LoginPage = () => {
                 Login
               </Button>
             </PHForm>
-            <Typography component="p" fontWeight={300}>
-              Don&apos;t have an account?{" "}
-              <Typography color="primary" component="span">
-                <Link href="/register">Create an account</Link>
-              </Typography>
-            </Typography>
           </Box>
         </Box>
       </Stack>
