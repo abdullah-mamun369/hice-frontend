@@ -4,8 +4,6 @@ import CustomTabComponent from "@/components/Tabs/CustomTabComponent";
 import { PRODUCT_CATEGORIES } from "@/constants/categories";
 import { Container } from "@mui/material";
 
-const productImage = "@/assets/product-img.png";
-
 // Valid Pexels image URLs (replace with your own if needed)
 const productImages = {
   footing:
