@@ -1,23 +1,22 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { Box, Tabs, Tab, Card, Typography, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import ThreeModelViewer from "../ThreeModelViewer/ThreeModelViewer";
+import { PRODUCT_CATEGORIES } from "@/constants/categories";
+import { TProduct } from "@/types/product";
+import Link from "next/link";
+import ProductPage from "@/app/(withCommonLayout)/product/[productId]/page";
 
 interface TabPanelProps {
-  children?: { imageUrl: string; serial: string; title: string }[];
+  children: TProduct[];
   value: number;
   index: number;
 }
 
-interface TabConfig {
-  label: string;
-  content: { imageUrl: string; serial: string; title: string }[];
-}
-
 interface CustomTabsProps {
-  tabs: TabConfig[];
+  products: TProduct[] | undefined;
   sx?: object;
   initialValue?: number;
 }
@@ -66,33 +65,50 @@ const CustomTabPanel: React.FC<TabPanelProps> = ({
       {value === index && (
         <Box p={3}>
           <Grid container spacing={3}>
-            {children?.map((item, idx) => (
+            {children?.map((product, idx) => (
               <Grid key={idx} size={{ xs: 12, md: 4 }}>
-                <StyledCard>
-                  <Box
-                    sx={{
-                      position: "relative",
-                      width: "100%",
-                      height: "200px",
-                      borderRadius: "8px",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Image
-                      src={item.imageUrl}
-                      alt={item.title}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </Box>
-                  <Typography variant="subtitle2" color="text.secondary" mt={2}>
-                    {item.serial}
-                  </Typography>
-                  <Typography variant="h6" textAlign="center" mt={1}>
-                    {item.title}
-                  </Typography>
-                </StyledCard>
+                <Link href={`/product/${product._id}`}>
+                  <StyledCard>
+                    <Box
+                      sx={{
+                        position: "relative",
+                        width: "100%",
+                        height: "200px",
+                        borderRadius: "8px",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <ThreeModelViewer
+                        modelUrl={product.threeDUrl}
+                        height="100%"
+                        width="100%"
+                        adjustCamera={1.3}
+                      />
+                    </Box>
+                    <Typography
+                      variant="subtitle2"
+                      color="text.secondary"
+                      mt={2}
+                    >
+                      {product.codeNumber}
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      color="text.secondary"
+                      mt={2}
+                    >
+                      {product.category}
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      textAlign="center"
+                      mt={1}
+                      color="text.secondary"
+                    >
+                      {product.title}
+                    </Typography>
+                  </StyledCard>
+                </Link>
               </Grid>
             ))}
           </Grid>
@@ -103,7 +119,7 @@ const CustomTabPanel: React.FC<TabPanelProps> = ({
 };
 
 const CustomTabComponent: React.FC<CustomTabsProps> = ({
-  tabs,
+  products,
   sx,
   initialValue = 0,
 }) => {
@@ -112,6 +128,27 @@ const CustomTabComponent: React.FC<CustomTabsProps> = ({
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  const categoryTab = [
+    {
+      label: PRODUCT_CATEGORIES.FOOTING,
+    },
+    {
+      label: PRODUCT_CATEGORIES.DRAINAGE,
+    },
+    {
+      label: PRODUCT_CATEGORIES.FRAMING,
+    },
+    {
+      label: PRODUCT_CATEGORIES.RECTIFICATION,
+    },
+    {
+      label: PRODUCT_CATEGORIES.RETAINING_WALLS,
+    },
+    {
+      label: PRODUCT_CATEGORIES.TIMBER_SUBFLOOR,
+    },
+  ];
 
   return (
     <Box sx={{ width: "100%", ...sx }}>
@@ -129,14 +166,14 @@ const CustomTabComponent: React.FC<CustomTabsProps> = ({
           aria-label="custom button tabs"
           sx={{ "& .MuiTabs-indicator": { display: "none" } }}
         >
-          {tabs.map((tab, index) => (
+          {categoryTab.map((tab, index) => (
             <CustomTab key={index} label={tab.label} />
           ))}
         </Tabs>
       </Box>
-      {tabs.map((tab, index) => (
+      {categoryTab.map((tab, index) => (
         <CustomTabPanel key={index} value={value} index={index}>
-          {tab.content}
+          {products?.filter((product) => product.category === tab.label) || []}
         </CustomTabPanel>
       ))}
     </Box>
