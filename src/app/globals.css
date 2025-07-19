@@ -7,3 +7,24 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+@layer utilities {
+  @keyframes drag {
+    0% {
+      transform: translate(-50%, -50%) translateX(0px);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50%, -50%) translateX(30px);
+      opacity: 0.6;
+    }
+    100% {
+      transform: translate(-50%, -50%) translateX(0px);
+      opacity: 1;
+    }
+  }
+
+  .animate-drag {
+    animation: drag 2s ease-in-out infinite;
+  }
+}
