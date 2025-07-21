@@ -66,7 +66,7 @@ const CustomTabPanel: React.FC<TabPanelProps> = ({
           <Grid container spacing={3}>
             {children?.map((product, idx) => (
               <Grid key={idx} size={{ xs: 12, md: 4 }}>
-                <Link href={`/product/${product._id}`}>
+                <Link href={`/product/${product._id}`} target="_blank">
                   <StyledCard>
                     <Box
                       sx={{
