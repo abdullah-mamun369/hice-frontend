@@ -23,12 +23,6 @@ export default function ProductPageClient({
       ) : (
         <h1>Loading.....</h1>
       )}
-
-      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-        <h1 className="text-2xl font-bold">{data?.title || "Loading..."}</h1>
-        <p className="text-lg">{data?.category || "Loading..."}</p>
-        <p className="text-sm">{data?.codeNumber || "Loading..."}</p>
-      </div>
     </div>
   );
 }
