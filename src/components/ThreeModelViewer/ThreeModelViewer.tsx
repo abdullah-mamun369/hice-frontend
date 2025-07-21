@@ -3,7 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stage, useGLTF } from "@react-three/drei";
 import React, { Suspense } from "react";
-import backgroundImage from "@/assets/model-bg.jpg";
+// import backgroundImage from "@/assets/model-bg.jpg";
 
 type ModelProps = {
   modelUrl: string;

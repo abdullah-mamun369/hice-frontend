@@ -7,7 +7,6 @@ import ThreeModelViewer from "../ThreeModelViewer/ThreeModelViewer";
 import { PRODUCT_CATEGORIES } from "@/constants/categories";
 import { TProduct } from "@/types/product";
 import Link from "next/link";
-import ProductPage from "@/app/(withCommonLayout)/product/[productId]/page";
 
 interface TabPanelProps {
   children: TProduct[];

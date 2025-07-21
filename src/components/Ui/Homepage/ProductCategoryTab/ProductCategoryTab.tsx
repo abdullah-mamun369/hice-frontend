@@ -9,7 +9,7 @@ const ProductCategoryTab = () => {
 
   console.log(data);
   const products = data?.products;
-  const meta = data?.meta;
+
   // console.log(doctors);
 
   return (

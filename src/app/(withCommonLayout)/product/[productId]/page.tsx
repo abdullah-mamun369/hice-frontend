@@ -1,14 +1,16 @@
 import { Box } from "@mui/material";
 import ProductPageClient from "./singleProductPage";
-import Sidebar from "@/components/Drawer/SwipeableDrawer";
+import SwipeableDrawer from "@/components/Drawer/SwipeableDrawer";
 
 const productPage = ({ params }: { params: { productId: string } }) => {
   const { productId } = params;
 
   return (
-    <Box>
-      <ProductPageClient productId={productId} />
-      <Sidebar />
+    <Box sx={{ display: "flex", minHeight: "100vh", position: "relative" }}>
+      <SwipeableDrawer productId={productId} />
+      <Box sx={{}}>
+        <ProductPageClient productId={productId} />
+      </Box>
     </Box>
   );
 };
