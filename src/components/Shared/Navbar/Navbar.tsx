@@ -20,7 +20,7 @@ const Navbar = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Box>
+        <Box component={Link} href="/">
           <Image src={coloredLogo} width={150} height={150} alt="logo" />
         </Box>
         <Stack direction="row" spacing={2}>
@@ -40,7 +40,7 @@ const Navbar = () => {
           </Typography>
           <Typography
             component={Link}
-            href="/"
+            href="/training"
             sx={{
               fontSize: "15px",
               fontWeight: 600,

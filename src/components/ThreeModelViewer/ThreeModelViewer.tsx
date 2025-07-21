@@ -28,29 +28,30 @@ export default function ThreeModelViewer({
       style={{
         width,
         height,
-        backgroundImage: `url(${backgroundImage.src || backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundColor: "#F0F2F0",
+        // backgroundImage: `url(${backgroundImage.src || backgroundImage})`,
+        // backgroundSize: "cover",
+        // backgroundPosition: "center",
         position: "relative",
       }}
     >
       <Canvas
-        shadows
         dpr={[1, 2]}
-        camera={{ position: [0, 2, 8], fov: 50 }}
+        camera={{ position: [0, 2, 8], fov: 80 }}
         style={{
           width: "100%",
           height: "100%",
           backgroundColor: "transparent",
-          cursor: "pointer",
+          cursor: "grab",
         }}
+        shadows={false}
       >
         <Suspense fallback={null}>
           <Stage
-            environment="studio"
+            environment="warehouse"
             intensity={1}
-            shadows
             adjustCamera={adjustCamera}
+            shadows={false}
           >
             <Model url={modelUrl} />
           </Stage>
