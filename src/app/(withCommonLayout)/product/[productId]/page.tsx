@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import ProductPageClient from "./singleProductPage";
 import SwipeableDrawer from "@/components/Drawer/SwipeableDrawer";
-import ProductHeading from "@/components/Ui/Singlepage/ProductHeading";
+import ProductHeading from "@/components/Ui/Singlepage/ProductHeading/ProductHeading";
 
 const productPage = async ({
   params,
