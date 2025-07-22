@@ -20,7 +20,7 @@ function Model({ url }: { url: string }) {
 export default function ThreeModelViewer({
   modelUrl,
   width = "100%",
-  height = "100vh",
+  height = "100%",
   adjustCamera = 1,
 }: ModelProps) {
   return (

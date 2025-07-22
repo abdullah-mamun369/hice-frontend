@@ -50,26 +50,26 @@ const SwipeableDrawer: React.FC<SwipeableDrawerProps> = ({ productId }) => {
         }}
       >
         {!isProductLoading ? (
-          <Box sx={{ p: 5, display: isOpen ? "block" : "none" }}>
-            <Typography variant="h6" sx={{ fontWeight: 600, color: "#6b6b6b" }}>
-              {productData.codeNumber || "Please put the code number"}
-            </Typography>
-            <Typography variant="h4" sx={{ fontWeight: 700, color: "#6b6b6b" }}>
-              {productData.title || "Please put the title"}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ fontWeight: 400, color: "#6b6b6b" }}
-            >
-              {productData.category}
-            </Typography>
-            <Box sx={{ mt: 8 }}>
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: 600, color: "#6b6b6b" }}
-              >
-                2D Model
-              </Typography>
+          <Box
+            sx={{ pt: 5, pl: 6, pr: 10, display: isOpen ? "block" : "none" }}
+          >
+            <Box sx={{}}>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 600, color: "#6b6b6b" }}
+                >
+                  2D Model
+                </Typography>
+                <Box
+                  sx={{
+                    height: "2px",
+                    width: "70%",
+                    backgroundColor: "#6b6b6b",
+                    marginLeft: "10px",
+                  }}
+                ></Box>
+              </Box>
               <a
                 href={productData.twoDUrl || "/placeholder-image.png"}
                 target="_blank"
@@ -86,12 +86,22 @@ const SwipeableDrawer: React.FC<SwipeableDrawerProps> = ({ productId }) => {
             </Box>
 
             <Box sx={{ mt: 9 }}>
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: 600, color: "#6b6b6b" }}
-              >
-                Disclaimer:
-              </Typography>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 600, color: "#6b6b6b" }}
+                >
+                  Disclaimer:
+                </Typography>
+                <Box
+                  sx={{
+                    height: "2px",
+                    width: "65%",
+                    backgroundColor: "#6b6b6b",
+                    marginLeft: "10px",
+                  }}
+                ></Box>
+              </Box>
               <Stack spacing={2}>
                 {isDisclaimerLoading ? (
                   <Typography
