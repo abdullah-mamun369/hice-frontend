@@ -13,7 +13,7 @@ instance.interceptors.request.use(
   function (config) {
     // Do something before request is sent
     const accessToken = getFromLocalStorage(authKey);
-    console.log(accessToken);
+    console.log("accessToken", accessToken);
 
     if (accessToken) {
       config.headers.Authorization = accessToken;

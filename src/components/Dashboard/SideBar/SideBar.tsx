@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-
-import { Box, List, Stack, Typography } from "@mui/material";
+import { Box, List, Stack } from "@mui/material";
 import Image from "next/image";
-import logoColored from "@/assets/color-logo.png";
+import hiiceLogo from "@/assets/color-logo.png";
 import Link from "next/link";
 import { drawerItems } from "@/utils/drawerItems";
 import { UserRole } from "@/types";
-import { useEffect, useState } from "react";
-import { getUserInfo } from "@/services/auth.services";
 import SidebarItem from "./SidebarItem";
+import { getUserInfo } from "@/services/auth.services";
+import { useEffect, useState } from "react";
 
 const SideBar = () => {
   const [userRole, setUserRole] = useState("");
@@ -17,6 +15,8 @@ const SideBar = () => {
   useEffect(() => {
     const { role } = getUserInfo() as any;
     setUserRole(role);
+
+    console.log("User Role:", role);
   }, []);
 
   return (
@@ -33,23 +33,12 @@ const SideBar = () => {
         component={Link}
         href="/"
       >
-        <Image src={logoColored} width={40} height={40} alt="logo" />
-        <Typography
-          variant="h6"
-          component="h1"
-          sx={{
-            cursor: "pointer",
-          }}
-        >
-          PH Health Care
-        </Typography>
+        <Image src={hiiceLogo} width={150} height={150} alt="logo" />
       </Stack>
-
       <List>
-        {userRole &&
-          drawerItems(userRole.toLowerCase() as UserRole).map((item, index) => (
-            <SidebarItem key={index} item={item} />
-          ))}
+        {drawerItems(userRole as UserRole).map((item, index) => (
+          <SidebarItem key={index} item={item} />
+        ))}
       </List>
     </Box>
   );

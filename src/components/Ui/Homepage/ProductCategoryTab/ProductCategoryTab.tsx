@@ -8,7 +8,7 @@ const ProductCategoryTab = () => {
   const { data, isLoading } = useGetAllProductsQuery({});
 
   console.log(data);
-  const products = data?.products;
+  const products = data?.products || [];
 
   // console.log(doctors);
 

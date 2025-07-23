@@ -159,7 +159,7 @@ const LoginPage = () => {
                   },
                 }}
               >
-                <Link href="/register">Forgot Password?</Link>
+                <Link href="/login">Forgot Password?</Link>
               </Typography>
               <Button
                 sx={{

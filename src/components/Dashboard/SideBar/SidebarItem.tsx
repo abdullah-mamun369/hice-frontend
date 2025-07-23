@@ -16,6 +16,7 @@ const SidebarItem = ({ item }: IProps) => {
   const linkPath = `/dashboard/${item.path}`;
   const pathname = usePathname();
 
+  // console.log({ pathname, linkPath });
   return (
     <Link href={linkPath}>
       <ListItem
@@ -26,9 +27,6 @@ const SidebarItem = ({ item }: IProps) => {
                 borderRight: "3px solid #1586FD",
                 "& svg": {
                   color: "#1586FD",
-                },
-                "& .MuiListItemText-primary": {
-                  color: "#1586FD", // This targets the text color of the selected item
                 },
               }
             : {}),

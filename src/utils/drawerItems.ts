@@ -24,6 +24,21 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
           title: "Manage Users",
           path: `${role}/manage-users`,
           icon: GroupIcon,
+        },
+        {
+          title: "Specialties",
+          path: `${role}/specialties`,
+          icon: TryIcon,
+        },
+        {
+          title: "Doctors",
+          path: `${role}/doctors`,
+          icon: MedicalInformationIcon,
+        },
+        {
+          title: "Schedules",
+          path: `${role}/schedules`,
+          icon: CalendarMonthIcon,
         }
       );
       break;

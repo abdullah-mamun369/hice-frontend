@@ -21,7 +21,7 @@ export default function ThreeModelViewer({
   modelUrl,
   width = "100%",
   height = "100%",
-  adjustCamera = 1,
+  adjustCamera = 5,
 }: ModelProps) {
   return (
     <div
