@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   FieldValues,
   FormProvider,
@@ -23,9 +22,11 @@ const PHForm = ({
   defaultValues,
 }: TFormProps) => {
   const formConfig: TFormConfig = {};
+
   if (resolver) {
     formConfig["resolver"] = resolver;
   }
+
   if (defaultValues) {
     formConfig["defaultValues"] = defaultValues;
   }
@@ -34,6 +35,7 @@ const PHForm = ({
   const { handleSubmit, reset } = methods;
 
   const submit: SubmitHandler<FieldValues> = (data) => {
+    // console.log(data);
     onSubmit(data);
     reset();
   };

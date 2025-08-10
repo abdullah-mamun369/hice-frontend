@@ -1,7 +1,7 @@
-import { InputAdornment, SxProps, TextField } from "@mui/material";
+import { SxProps, TextField, TextFieldProps } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
-type TPHInputProps = {
+type TInputProps = {
   name: string;
   label?: string;
   type?: string;
@@ -10,8 +10,7 @@ type TPHInputProps = {
   sx?: SxProps;
   placeholder?: string;
   required?: boolean;
-  icon?: React.ReactNode;
-  iconColor?: string;
+  inputProps?: TextFieldProps["inputProps"];
 };
 
 const PHInput = ({
@@ -21,13 +20,10 @@ const PHInput = ({
   size = "small",
   fullWidth,
   sx,
-  placeholder = label,
   required,
-  icon,
-  iconColor = "#949494",
-}: TPHInputProps) => {
+  inputProps,
+}: TInputProps) => {
   const { control } = useFormContext();
-
   return (
     <Controller
       control={control}
@@ -35,31 +31,18 @@ const PHInput = ({
       render={({ field, fieldState: { error } }) => (
         <TextField
           {...field}
+          value={field.value ?? ""}
           sx={{ ...sx }}
           label={label}
           type={type}
+          variant="outlined"
           size={size}
           fullWidth={fullWidth}
-          variant="outlined"
-          placeholder={placeholder}
+          placeholder={label}
           required={required}
           error={!!error?.message}
           helperText={error?.message}
-          InputProps={{
-            startAdornment: icon ? (
-              <InputAdornment position="start">
-                <span
-                  style={{
-                    color: iconColor,
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  {icon}
-                </span>
-              </InputAdornment>
-            ) : undefined,
-          }}
+          inputProps={inputProps}
         />
       )}
     />
